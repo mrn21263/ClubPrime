@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* --------------Accueil-------------- */
+
+
+.navbarclubprime{
+  height: 10svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0%;
+  transform: translateY(-30px);
+  animation: apparitionnav 0.4s 0.5s  ease-out forwards;
+}
+
+.navbarclubprime .acclogo{
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5vw;
+  margin-left: 2vw;
+}
+
+.logonav{
+  width: 50%;
+}
+
+.navbarclubprime .nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-right: 50px;
+
+}
+
+.navbarclubprime .nav .acc{
+  text-decoration-line: none;
+  padding-left: 0px;
+}
+
+.navbarclubprime .nav .acc {
+  color: black !important;
+  font-size: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+  padding-left: 70px;
+  margin-top: 10px;
+
+}
+
+.navbarclubprime .nav .acc:hover {
+  color: #120499;
+  transition: 0.2s;
+}
+
+
+.accueil {
+  height: 100svh;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  margin-top: 70px;
+}
+
+.landing p{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.landing img{
+  width: 200px;
+}
+
+.landing h1 {
+  color: #000;
+  font-size: 127px;
+  font-weight: 700;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px 100px 0px;
+}
+
+.logo img{
+  width: 600px;
+}
+
+
+.marowebpresentation{
+  padding: 0 5vw 0 5vw;
+}
+
+.marowebpresentation p{
+font-weight: bold;
+font-size: 3em;
+color: #131313;
+}
+
+
+/* --------------Stades-------------- */
+
+.stade {
+  width: 100vw;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.stade .gauche {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stade .gauche img {
+  width: 80%;
+}
+
+.stade .droite {
+  height: 100svh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stade .droite h6 {
+  color: white;
+  font-size: 80px;
+  font-weight: 700;
+  margin-bottom: 5vh;
+}
+
+.stade .droite p {
+  color: #fff;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 144.4%;
+  width: 90%;
+}
+
+/* --------------Equipe-------------- */
+
+
+.equipe{
+  height: 100vh;
+width: 100vw;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: visible;
+position: relative;
+}
+
+.equipe img{
+  width: 1000px;
+}
+
+.capitaine{
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  left: 0;
+  right: 0;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.capitaine img{
+  width: 350px;
+}
+
+.entraineur img{
+  width: 350px;
+}
+
+.entraineur{
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxinfoclub{
+  background-color: #120499;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.boxinfoclub h3{
+  color: white;
+  font-size: 20px;
+
+}
+
+.boxinfoclub p{
+  color: white;
+} 
+
+
+@keyframes apparitionnav {
+
+  100%{
+      opacity: 100%;
+      transform: none;
+  }
+
+
+}
+
+
+@keyframes apparitiontitre {
+
+  100%{
+      opacity: 90%;
+      transform: none;
+  }
+
+
+}
+
+.footer{
+  margin-top: 0px !important;
+  
+}

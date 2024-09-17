@@ -1,0 +1,158 @@
+
+  .bloc-contact{
+    display: flex;
+    align-items: center;
+    }
+    
+    .bloc-contact .gauche{
+    width: 45vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: 110px;
+    padding-top: 180px;
+    }
+    
+    
+    .contact-mail-form, .contact-phone-form, .contact-loca-form{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+    }
+    
+    .contact-mail-form img, .contact-phone-form img, .contact-loca-form img{
+    margin-right: 10px;
+    margin-top: 3px;
+    }
+    
+    .bloc-contact .gauche h6{
+    font-size: 20px;
+    color: #373737;
+    font-weight: bold;
+    } 
+    
+    .bloc-contact .gauche h3{
+    font-size: 45px;
+    color: #373737;
+    font-weight: bold;
+    padding-bottom: 15px;
+    } 
+    
+    
+    .bloc-contact p{
+    font-size: 20px;
+    color: #373737;
+    } 
+    
+    /* ------Partie de droite-------- */
+    
+    .formulaire{
+    background-color: #a3c5f2c8;
+    width: 620px;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 30px;
+    
+    }
+    
+    .bloc-contact .droite{
+    width: 55vw;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .np{
+    margin-top: 30px;
+    }
+    
+    .np, .te{
+    display: flex;
+    justify-content: space-around;
+    width: 620px;
+    }
+    
+    .np input, .te input{
+    height: 70px;
+    width: 250px;
+    border-radius: 50px;
+    border: 0px solid;
+    padding-left: 20px;
+    transition: 0.3s;
+    border: 2px solid white;
+    }
+    .formulaire .nom, .prenom, .tel, .mail{
+    display: flex;
+    flex-direction: column;
+    color: #120499;
+    font-size: 18px;
+    font-weight: 600;
+    }
+    
+    .messageform{
+    color: #120499;
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 30px;
+    }
+    
+    .messageform textarea{
+    width: 560px;
+    height: 130px;
+    border-radius: 20px;
+    border: 0px solid;
+    padding-left: 20px;
+    padding-top: 15px;
+    transition: 0.3s;
+    border: 2px solid white;
+    }
+    
+    .messageform span textarea{
+    width: 560px;
+    height: 70px;
+    border-radius: 20px;
+    border: 0px solid;
+    padding-left: 20px;
+    padding-top: 25px;
+    transition: 0.3s;
+    border: 2px solid white;
+    }
+    
+    .formulaire .btnenvoyer input{
+    margin-left: 30px;
+    width: 250px;
+    height: 60px;
+    border-radius: 40px;
+    border: 2px solid #120499;
+    background-color: #120499;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+    }
+    
+    .formulaire .btnenvoyer input:hover{
+    border: 2px solid #120499;
+    background-color: transparent;
+    color: #120499;
+    transition: 0.3s;
+    }
+    
+    
+    
+    .formulaire input:focus{
+    outline: none;
+    border: 2px solid #120499;
+    transition: 0.3s;
+    }
+    
+    .formulaire textarea:focus{
+    outline: none;
+    border: 2px solid #120499;
+    transition: 0.3s;
+    }
+    

@@ -4,29 +4,21 @@ DROP DATABASE IF EXISTS bdClubPrime;
 -- Créer la base de données
 CREATE DATABASE bdClubPrime;
 
--- Utiliser la base de données
-USE id21551042_clubprime;
-
+use bdClubPrime;
 -- Création de la table Club
 CREATE TABLE IF NOT EXISTS Club (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(277) NOT NULL,
+	logo VARCHAR(277),
     stade VARCHAR(277),
     descr VARCHAR(277),
-    dateCrea DATE,
+    anneeCrea INT(4),
     idLigue INT,
     descrStade VARCHAR(2757),
     photoStade VARCHAR(277),
     entraineur VARCHAR(277),
     photoEntraineur VARCHAR(277),
-    codeCouleur VARCHAR(277),
     FOREIGN KEY (idLigue) REFERENCES Ligue(id)
-);
-
--- Création de la table Pays
-CREATE TABLE IF NOT EXISTS Pays (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(277) NOT NULL
 );
 
 -- Création de la table Ligue
@@ -49,13 +41,6 @@ CREATE TABLE IF NOT EXISTS Joueur (
     FOREIGN KEY (idClub) REFERENCES Club(id)
 );
 
--- Création de la table Trophee
-CREATE TABLE IF NOT EXISTS Trophee (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(277) NOT NULL,
-    photoTrophee VARCHAR(277)
-);
-
 -- Création de la table Classement
 CREATE TABLE IF NOT EXISTS Classement (
     annee INT,
@@ -66,37 +51,13 @@ CREATE TABLE IF NOT EXISTS Classement (
 );
 
 
--- Création de la table Obtenir (association entre Clubs et Trophées)
-CREATE TABLE IF NOT EXISTS Obtenir (
-    idClub INT,
-    nombre INT,
-    idTrophee INT,
-    PRIMARY KEY (idClub, idTrophee),
-    FOREIGN KEY (idClub) REFERENCES Club(id),
-    FOREIGN KEY (idTrophee) REFERENCES Trophee(id)
+
+CREATE TABLE IF NOT EXISTS admin (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username varchar(255), 
+  password varchar(255)
 );
 
--- Création de la table Logo
-CREATE TABLE IF NOT EXISTS Logo (
-   annee int,
-   idClub INT,
-   periode varchar(255),
-   photoLogo VARCHAR(277),
-   FOREIGN KEY (idClub) REFERENCES Club(id),
-   PRIMARY KEY (annee, idClub)
-);
-CREATE TABLE IF NOT EXISTS Utilisateur{
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  identifiant varchar(255), 
-  mdp varchar(255)
-};
--- Insertion de données dans la table Pays
-INSERT INTO Pays (nom) VALUES
-('Allemagne'),
-('Angleterre'),
-('Espagne'),
-('France'),
-('Italie');
 
 -- Insertion de données dans la table Ligue
 INSERT INTO Ligue (nom, idPays, photoLigue) VALUES
@@ -106,47 +67,20 @@ INSERT INTO Ligue (nom, idPays, photoLigue) VALUES
 ('Ligue 1', 4,"ressources/LogoLigue/Ligue1.png"),
 ('Serie A', 5,"ressources/LogoLigue/SeriaA.png");
 
+
 -- Insertion de données dans la table Club
-INSERT INTO Club (nom, stade, descr, dateCrea, idLigue, descrStade, photoStade, entraineur, photoEntraineur, codeCouleur) VALUES
-('Bayern', 'Allianz Arena', 'Club de football basé à Munich, Allemagne', '1900-02-27', 1, "L'Allianz Arena ou Fußball Arena München, surnommée le « Schlauchboot » en raison de son aspect, est un stade de football situé au nord de Munich, la capitale du Land de Bavière en Allemagne. Le stade a une capacité de 75 000 spectateurs pour les matchs de Bundesliga, et 70 000 places en configuration internationale.", "ressources/PhotoJoueur/Bayern/Stade.jpg" ,"Thomas Tuchel", "ressources/PhotoJoueur/Bayern/Entraineur.jpg",'#dd0129'),
-('Liverpool', 'Anfield', 'Club de football historique de la Premier League anglaise', '1892-03-17', 2, "Anfield, situé à Liverpool, est un stade de football légendaire, surnommé le « Théâtre des rêves rouges ». Construit au nord de la ville, il est le sanctuaire du Liverpool Football Club. Doté d'une atmosphère électrique, Anfield offre une capacité de 53 394 places en configuration de matchs de la Premier League. Le stade emblématique a été le témoin de moments historiques du football, de chants passionnés et de célébrations inoubliables.","ressources/PhotoJoueur/Liverpool/Stade.jpg" ,"Jürgen Klopp", "ressources/PhotoJoueur/Liverpool/Entraineur.jpg",'#d10022'),
-('Man City', 'Etihad Stadium', 'Club de football de Manchester jouant en Premier League', '1880-04-16', 2, "L'Etihad Stadium, niché à Manchester, est le foyer éclatant du Manchester City FC. Surnommé le City of Manchester Stadium, il se dresse fièrement au cœur de l'action. Avec une capacité de plus de 53 000 places, ce stade moderne est le théâtre de performances époustouflantes de l'équipe des Ciel et Blanc, illuminant les rêves des supporters.", "ressources/PhotoJoueur/ManCity/Stade.jpg" ,"Pep Guardiola", "ressources/PhotoJoueur/ManCity/Entraineur.jpg",'#6caee0'),
-('Real Madrid', 'Santiago Bernabéu', 'Club de football espagnol de la ville de Madrid', '1902-03-06', 3, "Le Santiago Bernabéu, légende du football basé à Madrid, est le temple sacré du Real Madrid. Renommé pour son histoire glorieuse, il peut accueillir plus de 80 000 fans passionnés. Ce stade emblématique est imprégné d'une atmosphère magique lors des matchs, offrant une expérience incomparable aux aficionados madrilènes.", "ressources/PhotoJoueur/RealMadrid/Stade.webp" ,"Carlo Ancelotti", "ressources/PhotoJoueur/Real Madrid/Entraineur.jpg",NULL),
-('Chelsea', 'Stamford Bridge', 'Club de football londonien de Premier League', '1905-03-10', 2, "Stamford Bridge, résidence du Chelsea FC, se dresse avec élégance à Londres. Avec une capacité de plus de 40 000 sièges, ce stade empreint de tradition est le lieu où les Blues de Chelsea forgent leur histoire. L'atmosphère vibrante de Stamford Bridge fait de chaque match une aventure captivante.", "ressources/PhotoJoueur/Chelsea/Stade.jpg" ,"Mauricio Pochettino", "ressources/PhotoJoueur/Chelsea/Entraineur.jpg", '#000c8a',"ressources/FondEcranEquipe/Chealsea.png",NULL),
-('Barcelone', 'Camp Nou', 'Club de football de Barcelone un des plus reconnus au monde', '1899-11-29', 3, "Le Camp Nou, situé à Barcelone, est le géant catalan où le FC Barcelone écrit son histoire. Avec une capacité de plus de 99 000 spectateurs, il est le plus grand stade d'Europe. L'ambiance électrique, et les prouesses de génies du ballon rond font du Camp Nou un lieu mythique.", "ressources/PhotoJoueur/Barcelone/Stade.jpg" ,"Xavi Hernández", "ressources/PhotoJoueur/Barcelone/Entraineur.jpg",NULL),
-('PSG', 'Parc des Princes', 'Club de football français basé à Paris', '1970-08-12', 4, "Le Parc des Princes, joyau parisien, est l'antre du Paris Saint-Germain. Avec une capacité de plus de 48 000 places, ce stade moderne vibre au rythme des exploits des stars du PSG. L'élégance et le dynamisme du Parc des Princes en font un lieu emblématique du football français.", "ressources/PhotoJoueur/PSG/Stade.jpg" ,"Luis Enrique", "ressources/PhotoJoueur/PSG/Entraineur.jpg",NULL),
-('Juventus', 'Allianz Stadium', 'Club de football italien situé à Turin', '1897-11-01', 5, "L'Allianz Stadium, situé à Turin, est le repaire de la Juventus. Avec une capacité de plus de 41 000 sièges, ce stade moderne offre une expérience immersive aux fans bianconeri. L'Allianz Stadium est le théâtre des triomphes de la Vecchia Signora, avec une ambiance électrisante à chaque rencontre.", "ressources/PhotoJoueur/Juventus/Stade.jpg" ,"Massimiliano Allegri", "ressources/PhotoJoueur/Juventus/Entraineur.jpg",NULL),
-('Atlético de Madrid', 'Wanda Metropolitano', 'Club de football basé à Madrid, Espagne', '1903-04-26', 3, "Le Wanda Metropolitano, situé à Madrid, est le nouveau sanctuaire de l'Atlético de Madrid. Avec une capacité de plus de 68 000 places, il incarne la passion et la détermination des Colchoneros. Ce stade moderne est le témoin de la lutte incessante de l'Atlético sur le terrain.", "ressources/PhotoJoueur/AtleticoMadrid/Stade.jpg" ,"Diego Simeone", "ressources/PhotoJoueur/AtleticoMarid/Entraineur.jpg",NULL ),
-('Man United', 'Old Trafford', 'Club de football anglais basé à Manchester, très populaire mondialement', '1878-01-01', 2, "Old Trafford, trésor de Manchester, est l'icône du Manchester United. Avec une capacité de plus de 74 000 sièges, il résonne de l'histoire glorieuse du club. Surnommé le Théâtre des Rêves, Old Trafford est le lieu où les Red Devils forgent leur légende, avec une atmosphère incomparable.", "ressources/PhotoJoueur/ManUnited/Stade.jpg" ,"Erik ten Hag", "ressources/PhotoJoueur/ManUnited/Entraineur.jpg",NULL),
-('Roma', 'Stadio Olimpico', 'Club de football basé à Rome, Italie', '1927-07-22', 5, "Le Stadio Olimpico, situé à Rome, est le temple de l'AS Roma. Avec une capacité de plus de 70 000 places, ce stade historique a été le témoin de moments inoubliables de la Roma. L'atmosphère passionnée du Stadio Olimpico rend chaque match mémorable pour les supporters giallorossi.", "ressources/PhotoJoueur/Roma/Stade.jpg" ,"José Mourinho", "ressources/PhotoJoueur/Roma/Entraineur.jpg",NULL);
-
-
-INSERT INTO Trophee (nom, photoTrophee) VALUES
-('Ligue 1', 'ressources/PhotoTrophee/Ligue1.png'),
-('Coupe de France', 'ressources/PhotoTrophee/CoupeDeFrance.png'),
-('Trophée des Champions', 'ressources/PhotoTrophee/TropheeDesChampions.png'),
-('Serie A', 'ressources/PhotoTrophee/SerieA.png'),
-('Coppa Italia', 'ressources/PhotoTrophee/CoppaItalia.png'),
-('Supercoppa Italiana', 'ressources/PhotoTrophee/SupercoppaItaliana.png'),
-('Premier League', 'ressources/PhotoTrophee/PremierLeague.png'),
-('FA Cup', 'ressources/PhotoTrophee/FACup.png'),
-('Carabao Cup', 'ressources/PhotoTrophee/CarabaoCup.png'),
-('Community Shield', 'ressources/PhotoTrophee/CommunityShield.png'),
-('Bundesliga', 'ressources/PhotoTrophee/Bundesliga.jpg'),
-('DFB-Pokal', 'ressources/PhotoTrophee/DFBPokal.png'),
-('DFL-Supercup', 'ressources/PhotoTrophee/DFLSupercup.png'),
-('La Liga', 'ressources/PhotoTrophee/LaLiga.png'),
-('Copa del Rey', 'ressources/PhotoTrophee/CopaDelRey.png'),
-('Supercopa de España', 'ressources/PhotoTrophee/SupercopaDeEspana.png'),
-('Ligue des Champions de l''UEFA', 'ressources/PhotoTrophee/LigueDesChampions.png'),
-('Ligue Europa de l\UEFA', 'ressources/PhotoTrophee/LigueEuropa.png'),
-('Supercoupe de l\UEFA', 'ressources/PhotoTrophee/SupercoupeUEFA.png'),
-('Fifa Club World Cup', 'ressources/PhotoTrophee/FifaClubWorldCup.png'),
-('Audi Cup', 'ressources/PhotoTrophee/AudiCup.png'),
-('Premier League Asia Trophy', 'ressources/PhotoTrophee/PremierLeagueAsiaTrophy.png'),
-('International Champions Cup', 'ressources/PhotoTrophee/InternationalChampionsCup.png'),
-('Trophée Joan Gamper', 'ressources/PhotoTrophee/TropheeJoanGamper.png'),
-('UEFA Europa Conference League', 'ressources/PhotoTrophee/UEFAEuropaConferenceLeague.png');
+INSERT INTO Club (nom, logo, stade, descr, anneeCrea, idLigue, descrStade, photoStade, entraineur)
+VALUES ('Chelsea',null, 'Stamford Bridge', 'Club de football londonien de Premier League', '1905', 2, "Stamford Bridge, résidence du Chelsea FC, se dresse avec élégance à Londres. Avec une capacité de plus de 40 000 sièges, ce stade empreint de tradition est le lieu où les Blues de Chelsea forgent leur histoire. L'atmosphère vibrante de Stamford Bridge fait de chaque match une aventure captivante.", "ressources/PhotoJoueur/Chelsea/Stade.jpg", "Mauricio Pochettino"),
+('Liverpool',null, 'Anfield', 'Club de football historique de la Premier League anglaise', '1892', 2, "Anfield, situé à Liverpool, est un stade de football légendaire, surnommé le « Théâtre des rêves rouges ». Construit au nord de la ville, il est le sanctuaire du Liverpool Football Club. Doté d'une atmosphère électrique, Anfield offre une capacité de 53 394 places en configuration de matchs de la Premier League. Le stade emblématique a été le témoin de moments historiques du football, de chants passionnés et de célébrations inoubliables.","ressources/PhotoJoueur/Liverpool/Stade.jpg" ,"Jürgen Klopp"),
+('Man City',null, 'Etihad Stadium', 'Club de football de Manchester jouant en Premier League', '1880', 2, "L'Etihad Stadium, niché à Manchester, est le foyer éclatant du Manchester City FC. Surnommé le City of Manchester Stadium, il se dresse fièrement au cœur de l'action. Avec une capacité de plus de 53 000 places, ce stade moderne est le théâtre de performances époustouflantes de l'équipe des Ciel et Blanc, illuminant les rêves des supporters.", "ressources/PhotoJoueur/ManCity/Stade.jpg" ,"Pep Guardiola"),
+('Real Madrid',null, 'Santiago Bernabéu', 'Club de football espagnol de la ville de Madrid', '1902', 3, "Le Santiago Bernabéu, légende du football basé à Madrid, est le temple sacré du Real Madrid. Renommé pour son histoire glorieuse, il peut accueillir plus de 80 000 fans passionnés. Ce stade emblématique est imprégné d'une atmosphère magique lors des matchs, offrant une expérience incomparable aux aficionados madrilènes.", "ressources/PhotoJoueur/RealMadrid/Stade.webp" ,"Carlo Ancelotti"),
+('Chelsea',null, 'Stamford Bridge', 'Club de football londonien de Premier League', '1905', 2, "Stamford Bridge, résidence du Chelsea FC, se dresse avec élégance à Londres. Avec une capacité de plus de 40 000 sièges, ce stade empreint de tradition est le lieu où les Blues de Chelsea forgent leur histoire. L'atmosphère vibrante de Stamford Bridge fait de chaque match une aventure captivante.", "ressources/PhotoJoueur/Chelsea/Stade.jpg" ,"Mauricio Pochettino"),
+('Barcelone',null, 'Camp Nou', 'Club de football de Barcelone un des plus reconnus au monde', '1899', 3, "Le Camp Nou, situé à Barcelone, est le géant catalan où le FC Barcelone écrit son histoire. Avec une capacité de plus de 99 000 spectateurs, il est le plus grand stade d'Europe. L'ambiance électrique, et les prouesses de génies du ballon rond font du Camp Nou un lieu mythique.", "ressources/PhotoJoueur/Barcelone/Stade.jpg" ,"Xavi Hernández"),
+('PSG',null, 'Parc des Princes', 'Club de football français basé à Paris', '1970', 4, "Le Parc des Princes, joyau parisien, est l'antre du Paris Saint-Germain. Avec une capacité de plus de 48 000 places, ce stade moderne vibre au rythme des exploits des stars du PSG. L'élégance et le dynamisme du Parc des Princes en font un lieu emblématique du football français.", "ressources/PhotoJoueur/PSG/Stade.jpg" ,"Luis Enrique"),
+('Juventus',null, 'Allianz Stadium', 'Club de football italien situé à Turin', '1897', 5, "L'Allianz Stadium, situé à Turin, est le repaire de la Juventus. Avec une capacité de plus de 41 000 sièges, ce stade moderne offre une expérience immersive aux fans bianconeri. L'Allianz Stadium est le théâtre des triomphes de la Vecchia Signora, avec une ambiance électrisante à chaque rencontre.", "ressources/PhotoJoueur/Juventus/Stade.jpg" ,"Massimiliano Allegri"),
+('Atlético de Madrid',null, 'Wanda Metropolitano', 'Club de football basé à Madrid, Espagne', '1903', 3, "Le Wanda Metropolitano, situé à Madrid, est le nouveau sanctuaire de l'Atlético de Madrid. Avec une capacité de plus de 68 000 places, il incarne la passion et la détermination des Colchoneros. Ce stade moderne est le témoin de la lutte incessante de l'Atlético sur le terrain.", "ressources/PhotoJoueur/AtleticoMadrid/Stade.jpg" ,"Diego Simeone"),
+('Man United',null, 'Old Trafford', 'Club de football anglais basé à Manchester, très populaire mondialement', '1878', 2, "Old Trafford, trésor de Manchester, est l'icône du Manchester United. Avec une capacité de plus de 74 000 sièges, il résonne de l'histoire glorieuse du club. Surnommé le Théâtre des Rêves, Old Trafford est le lieu où les Red Devils forgent leur légende, avec une atmosphère incomparable.", "ressources/PhotoJoueur/ManUnited/Stade.jpg" ,"Erik ten Hag"),
+('Roma',null, 'Stadio Olimpico', 'Club de football basé à Rome, Italie', '1927', 5, "Le Stadio Olimpico, situé à Rome, est le temple de l'AS Roma. Avec une capacité de plus de 70 000 places, ce stade historique a été le témoin de moments inoubliables de la Roma. L'atmosphère passionnée du Stadio Olimpico rend chaque match mémorable pour les supporters giallorossi.", "ressources/PhotoJoueur/Roma/Stade.jpg" ,"José Mourinho");
 
 -- Insertion de données dans la table Classement
 INSERT INTO Classement (annee, position, idClub) VALUES
@@ -173,112 +107,9 @@ INSERT INTO Classement (annee, position, idClub) VALUES
 ('2023', 7, 9),  -- Man United
 ('2023', 10, 11); -- Roma
 
+Insert into admin (username,password) Values ("root","root");
 
--- Insertion de données dans la table Obtenir (association entre Clubs et Trophées)
-INSERT INTO Obtenir (idClub, nombre, idTrophee) VALUES
--- Bayern Munich
-(1, 6, 17), -- Ligue des Champions
-(1, 1, 18), -- UEFA Europa League
-(1, 33, 11), -- Bundesliga
-(1, 20, 12), -- DFB Pokal
-(1, 2, 19), -- Super Coupe UEFA
-(1, 10, 9), -- Super Cup (Community Shield)
-(1, 2, 20), -- FIFA Club World Cup (CM Clubs)
-(1, 3, 21), -- Audi Cup
 
--- Liverpool
-(2, 6, 17), -- Ligue des Champions
-(2, 3, 18), -- UEFA Europa League
-(2, 19, 7), -- Premier League
-(2, 8, 8), -- FA Cup
-(2, 4, 5), -- League Championship
-(2, 9, 6), -- League Cup
-(2, 16, 10), -- Community Shield (Angleterre)
-(2, 4, 19), -- Super Coupe UEFA
-(2, 1, 20), -- Cdm club
-(2, 1, 22), -- Premier League asia trophy
-
--- Manchester City
-(3, 1, 17), -- Ligue des Champions
-(3, 9, 7), -- Premier League
-(3, 7, 8), -- FA Cup
-(3, 7, 6), -- League Championship
-(3, 8, 9), -- League Cup
-(3, 6, 10), -- Community Shield (Angleterre)
-
--- Man City
-(4, 14, 17), -- Ligue des Champions
-(4, 2, 18), -- UEFA Europa League
-(4, 35, 14), -- Liga
-(4, 20, 15), -- Coupe du Roi
-(4, 10, 16), -- Supercopa de España
-(4, 4, 19), -- Super Coupe UEFA
-(4, 5, 20), -- CM Clubs
-(4, 1, 23), -- International Champions Cup
-
--- Chelsea
-(5, 2, 17), -- Ligue des Champions
-(5, 2, 18), -- UEFA Europa League
-(5, 6, 7), -- Premier League
-(5, 8, 8), -- FA Cup
-(5, 2, 5), -- League Championship
-(5, 5, 6), -- League Cup
-(5, 4, 10), -- Community Shield (Angleterre)
-(5, 2, 19), -- Super Coupe UEFA
-(5, 1, 20), -- CM Clubs
-
--- FC Barcelone
-(6, 5, 17), -- Ligue des Champions
-(6, 27, 14), -- Liga
-(6, 31, 15), -- Coupe du Roi
-(6, 14, 16), -- Supercopa de España
-(6, 5, 19), -- Super Coupe UEFA
-(6, 3, 20), -- CM Clubs
-(6, 1, 21), -- Audi Cup
-(6, 6, 24), -- Trophée Joan Gamper
-
--- Paris Saint-Germain (PSG)
-(7, 11, 1), -- Ligue 1
-(7, 14, 2), -- Coupe de France
-(7, 11, 3), -- Trophée des Champions (France)
-(7, 9, 12), -- Coupe de la Ligue
-(7, 1, 17), -- Ligue des Champions
-
--- Juventus
-(8, 2, 17), -- UEFA Champions League
-(8, 3, 18), -- UEFA Europa League
-(8, 9, 6), -- Supercoppa Italiana
-(8, 36, 4), -- Serie A
-(8, 14, 5), -- Coppa Italia
-
--- Atlético Madrid
-(9, 3, 18), -- UEFA Europa League
-(9, 11, 14), -- La Liga
-(9, 10, 15), -- Copa del Rey
-(9, 1, 17), -- UEFA Champions League
-(9, 4, 16), -- Supercopa de España
-(9, 3, 19), -- UEFA Super Cup
-(9, 1, 21), -- Audi Cup
-
--- Manchester United
-(10, 3, 17), -- UEFA Champions League
-(10, 1, 18), -- UEFA Europa League
-(10, 20, 7), -- Premier League
-(10, 12, 8), -- FA Cup
-(10, 2, 13), -- DFL-Supercup
-(10, 6, 9), -- League Cup
-(10, 21, 10), -- Community Shield (Angleterre)
-(10, 1, 19), -- UEFA Super Cup
-(10, 1, 20), -- FIFA Club World Cup
-(10, 1, 23), -- International Champions Cup
-
--- AS Roma
-(11, 1, 25), -- UEFA Europa Conference League
-(11, 2, 6), -- Supercoppa Italiana
-(11, 3, 4), -- Serie A
-(11, 9, 5), -- Coppa Italia
-(11, 1, 12); -- Serie B
-     
 INSERT INTO Joueur (nom, prenom, photo, poste, idClub)
 VALUES
   ('Ulreich', 'Sven', 'ressources/PhotoJoueur/Bayern/SU.webp', 'G', 1),
@@ -439,94 +270,3 @@ VALUES
     ('Patricio', 'Rui', 'ressources/PhotoJoueur/Roma/RP.webp', 'G', 11);
 
 
-INSERT INTO Logo VALUES 
-    (1900, 1, '1900-1901', 'ressources/LogoEquipe/Bayern/19001901.png'),
-    (1902, 1, '1902-1906', 'ressources/LogoEquipe/Bayern/19021906.png'),
-    (1906, 1, '1906-1908', 'ressources/LogoEquipe/Bayern/19061908.png'),
-    (1919, 1, '1919-1920', 'ressources/LogoEquipe/Bayern/19191920.png'),
-    (1931, 1, '1931-1935', 'ressources/LogoEquipe/Bayern/19311935.png'),
-    (1955, 1, '1955-1966', 'ressources/LogoEquipe/Bayern/19551966.gif'),
-    (1966, 1, '1966-1967', 'ressources/LogoEquipe/Bayern/19661967.gif'),
-    (1967, 1, '1967-1997', 'ressources/LogoEquipe/Bayern/19671997.png'),
-    (1997, 1, '1997-2002', 'ressources/LogoEquipe/Bayern/19972002.png'),
-    (2002, 1, '2002-2017', 'ressources/LogoEquipe/Bayern/20022017.png');
-  
-
-
-INSERT INTO Logo VALUES 
-    (1981, 2, '1981-1987', 'ressources/LogoEquipe/Liverpool/19811987.gif'),
-    (1987, 2, '1987-1992', 'ressources/LogoEquipe/Liverpool/19871992.gif'),
-    (1992, 2, '1992-1993', 'ressources/LogoEquipe/Liverpool/19921993.gif'),
-    (1993, 2, '1993-2000', 'ressources/LogoEquipe/Liverpool/19932000.png'),
-    (2000, 2, '2000-Actuel', 'ressources/LogoEquipe/Liverpool/2000.png'),
-
-    (1926, 3, '1926-1970', 'ressources/LogoEquipe/ManCity/19261970.png'),
-    (1972, 3, '1972-1976', 'ressources/LogoEquipe/ManCity/19721976.png'),
-    (1976, 3, '1976-1981', 'ressources/LogoEquipe/ManCity/19761981.png'),
-    (1981, 3, '1981-1997', 'ressources/LogoEquipe/ManCity/19811997.png'),
-    (1997, 3, '1997-2016', 'ressources/LogoEquipe/ManCity/19972016.png'),
-    (2016, 3, '2016-Actuel', 'ressources/LogoEquipe/ManCity/2016.png'),
-
-    (1902, 4, '1902-1903', 'ressources/LogoEquipe/RealMadrid/19021903.png'),
-    (1903, 4, '1903-1908', 'ressources/LogoEquipe/RealMadrid/19031908.png'),
-    (1908, 4, '1908-1920', 'ressources/LogoEquipe/RealMadrid/19081920.png'),
-    (1920, 4, '1920-1931', 'ressources/LogoEquipe/RealMadrid/19201931.png'),
-    (1931, 4, '1931-1941', 'ressources/LogoEquipe/RealMadrid/19311941.png'),
-    (1941, 4, '1941-1997', 'ressources/LogoEquipe/RealMadrid/19411997.png'),
-    (1997, 4, '1997-Actuel', 'ressources/LogoEquipe/RealMadrid/1997Actuel.png'),
-
-    (1905, 5, '1906-1951', 'ressources/LogoEquipe/Chelsea/19051952.jpg'),
-    (1952, 5, '1952-1953', 'ressources/LogoEquipe/Chelsea/19521953.jpg'),
-    (1953, 5, '1953-1986', 'ressources/LogoEquipe/Chelsea/19531986.jpg'),
-    (1986, 5, '1986-2002', 'ressources/LogoEquipe/Chelsea/19862002.jpg'),
-    (2002, 5, '2002-2005', 'ressources/LogoEquipe/Chelsea/20022005.jpg'),
-    (2005, 5, '2005-Actuel', 'ressources/LogoEquipe/Chelsea/2005Actuel.png'),
-
-    (1899, 6, '1899-1906', 'ressources/LogoEquipe/Barcelone/18991906.jpg'),
-    (1906, 6, '1906-1920', 'ressources/LogoEquipe/Barcelone/19061920.jpg'),
-    (1920, 6, '1920-1936', 'ressources/LogoEquipe/Barcelone/19201936.jpg'),
-    (1936, 6, '1936-1939', 'ressources/LogoEquipe/Barcelone/19361939.jpg'),
-    (1939, 6, '1939-1946', 'ressources/LogoEquipe/Barcelone/19391946.jpg'),
-    (1946, 6, '1946-1960', 'ressources/LogoEquipe/Barcelone/19461960.jpg'),
-    (1960, 6, '1960-1974', 'ressources/LogoEquipe/Barcelone/19601974.jpg'),
-    (1974, 6, '1974-1975', 'ressources/LogoEquipe/Barcelone/19741975.jpg'),
-    (1975, 6, '1975-2002', 'ressources/LogoEquipe/Barcelone/19752002.jpg'),
-    (2002, 6, '2002-Actuel', 'ressources/LogoEquipe/Barcelone/2002Actuel.jpg'),
-
-    (1970, 7, '1970-1972', 'ressources/LogoEquipe/PSG/19701972.png'),
-    (1972, 7, '1972-1982', 'ressources/LogoEquipe/PSG/19721982.jpg'),
-    (1982, 7, '1982-1992', 'ressources/LogoEquipe/PSG/19821992.png'),
-    (1992, 7, '1992-1996', 'ressources/LogoEquipe/PSG/19921996.png'),
-    (1996, 7, '1996-2002', 'ressources/LogoEquipe/PSG/19962002.png'),
-    (2002, 7, '2002-2010', 'ressources/LogoEquipe/PSG/20022010.png'),
-    (2010, 7, '2010-2012', 'ressources/LogoEquipe/PSG/20102012.png'),
-    (2013, 7, '2013-Actuel', 'ressources/LogoEquipe/PSG/2013Actuel.png'),
-
-    (1905, 8, '1905-1931', 'ressources/LogoEquipe/Juventus/19051931.png'),
-    (1931, 8, '1931-1993', 'ressources/LogoEquipe/Juventus/19311993.png'),
-    (1993, 8, '1993-2004', 'ressources/LogoEquipe/Juventus/19932004.png'),
-    (2004, 8, '2004-2017', 'ressources/LogoEquipe/Juventus/20042017.png'),
-    (2017, 8, '2017-2020', 'ressources/LogoEquipe/Juventus/20172020.png'),
-    (2020, 8, '2020-Actuel', 'ressources/LogoEquipe/Juventus/2020Actuel.png'),
-
-    (1903, 9, '1903-1911', 'ressources/LogoEquipe/AtleticoMadrid/19031911.jpg'),
-    (1911, 9, '1911-1939', 'ressources/LogoEquipe/AtleticoMadrid/19111939.png'),
-    (1939, 9, '1939-1942', 'ressources/LogoEquipe/AtleticoMadrid/19391942.jpg'),
-    (1942, 9, '1942-1947', 'ressources/LogoEquipe/AtleticoMadrid/19421947.jpg'),
-    (1947, 9, '1947-2016', 'ressources/LogoEquipe/AtleticoMadrid/19472016.png'),
-    (2017, 9, '2017-Actuel', 'ressources/LogoEquipe/AtleticoMadrid/2017Actuel.png'),
-
-    (1878, 10, '1878-1902', 'ressources/LogoEquipe/ManUnited/18781902.jpg'),
-    (1902, 10, '1902-1940', 'ressources/LogoEquipe/ManUnited/19021940.jpg'),
-    (1940, 10, '1940-1960', 'ressources/LogoEquipe/ManUnited/19401960.png'),
-    (1960, 10, '1960-1970', 'ressources/LogoEquipe/ManUnited/19601970.png'),
-    (1970, 10, '1970-1973', 'ressources/LogoEquipe/ManUnited/19701973.jpg'),
-    (1973, 10, '1973-1998', 'ressources/LogoEquipe/ManUnited/19731998.png'),
-    (1998, 10, '1998-Actuel', 'ressources/LogoEquipe/ManUnited/1998Actuel.png'),
-
-    (1930, 11, '1930-1960', 'ressources/LogoEquipe/Roma/19301960.jpg'),
-    (1960, 11, '1960-1978', 'ressources/LogoEquipe/Roma/19601978.png'),
-    (1978, 11, '1978-1997', 'ressources/LogoEquipe/Roma/19781997.png'),
-    (1997, 11, '1997-2013', 'ressources/LogoEquipe/Roma/19972013.png'),
-    (2013, 11, '2013-2017', 'ressources/LogoEquipe/Roma/20132017.png'),
-    (2017, 11, '2017-Actuel', 'ressources/LogoEquipe/Roma/2017Actuel.png');

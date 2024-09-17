@@ -3,10 +3,11 @@
     ?>
 
     <head>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="../css/style.css">
+
+
     </head>
     <div class="podium" id="podium">
     <div class="date">
@@ -19,6 +20,33 @@
 </div>
     <div class="place">
       <div class="ranked">
+
+      <?php
+    $position = 1;
+
+    foreach ($classement as $equipe) {
+        if ($position <= 3) {
+            $nomEquipe = $equipe['nom'];
+            $imageEquipe = $equipe['MAX(logo.photologo)'];
+            $idEquipe = $equipe['id'];
+    ?>
+        <a href="./vue/vueclub.php?id=<?php echo $idEquipe; ?>">
+          <div class="place<?php echo $position; ?>">
+              <div class="boxlogoclub"><img src="<?php echo $imageEquipe; ?>" alt="Logo de <?php echo $nomEquipe; ?>" width="80px"></div>
+              <p><?php echo $nomEquipe; ?></p>
+              <div class="boxplaceclub">
+                  <p>#<?php echo $position; ?></p>
+              </div>
+          </div>
+
+    <?php
+        }
+
+        $position++;
+    }
+    ?>
+    iy
+  <a href="./vue/vueclub.php?id=<?php echo $idEquipe; ?>">
         <div class="general">
           <img src="<?php echo $imageDeuxiemeEquipe;?>" alt="logo du deuxieme" width="50%">
           <div class="deux">
@@ -28,6 +56,7 @@
             </div>
           </div>
         </div>
+  </a>
 
         <div class="general2">
         <img src="<?php echo $imagePremiereEquipe; ?>" alt="logo du premier" width="50%">
@@ -82,10 +111,4 @@
 
 </div>
 
-</div>
-
-</div>
-  </div>
-
-
-
+    </body>

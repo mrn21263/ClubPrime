@@ -25,3 +25,11 @@ var resetBackground = function () {
 document.querySelector(".general2").addEventListener("mouseout", resetBackground);
 document.querySelector(".general").addEventListener("mouseout", resetBackground);
 document.querySelector(".general3").addEventListener("mouseout", resetBackground);
+
+
+
+document.getElementById('tri').addEventListener('change', function() {
+  document.getElementById('triForm').submit();
+});
+
+

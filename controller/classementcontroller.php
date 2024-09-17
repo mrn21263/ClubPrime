@@ -1,21 +1,18 @@
 <?php
 include('./model/bdclassement.php');
 
-$selectedYear = $_GET['quantity'] ?? '2023/2024';
-$podium = getPodiumByAnnee($selectedYear);
-$classement = getClassement($selectedYear);
+$bdClassement = new BdClassement();
+$classementData = $bdClassement->getClassement();
 
-$premiereEquipe = getEquipeInfo($podium, 0);
-$deuxiemeEquipe = getEquipeInfo($podium, 1);
-$troisiemeEquipe = getEquipeInfo($podium, 2);
+class ClubController
+{
+    public function afficherClubsAction()
+    {
+        global $clubs;
+        $clubs = BdClassement::getAllClubs();
+    }
+}
 
-$nomPremiereEquipe = $premiereEquipe['nom'];
-$imagePremiereEquipe = $premiereEquipe['photologo'];
-
-$nomDeuxiemeEquipe = $deuxiemeEquipe['nom'];
-$imageDeuxiemeEquipe = $deuxiemeEquipe['photologo'];
-
-$nomTroisiemeEquipe = $troisiemeEquipe['nom'];
-$imageTroisiemeEquipe = $troisiemeEquipe['photologo'];
-
-
+$controller = new ClubController();
+$controller->afficherClubsAction();
+?>

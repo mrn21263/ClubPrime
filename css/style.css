@@ -8,7 +8,8 @@
     scroll-snap-type: y  mandatory; 
     scroll-behavior: smooth;
   }
-
+  
+  
   body::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -19,21 +20,21 @@
     width: 0;
     scrollbar-width: none;
   }
-
+  
   ::-webkit-scrollbar-thumb {
     background: transparent;
   }
-
-
+  
+  
   /* --------------Accueil-------------- */
-
-
+  
+  
   .accueil{
-    background-image: url(../ressources/accueil/Landing-page.png);
+    /* background-image: url(../ressources/accueil/Landing-page.png); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 70svh;
+    height: 100vh;
   }
 
   .navbar{
@@ -50,6 +51,7 @@
   .navbar nav{
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
     width: 70vw;
     margin-left: 4vw;
@@ -89,14 +91,14 @@
 
 .corp{
     width: 100vw;
-    height: 60svh;
+    height: 85svh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-.corp h1{
+  }
+  
+  .corp h1{
     color: #FFF;
     font-size: 100px;
     font-style: normal;
@@ -108,8 +110,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 12vw;
-    height: 79px;
     border-radius: 50px;
     background-color: #120499;
     color: white;
@@ -122,108 +122,108 @@
     background-color: white;
     color: #120499;
     transition: 0.3s;
-}
-
- .container {
-	 position: absolute;
-	 margin: auto;
-	 top: 0;
-	 left: 1;
-	 right: 0;
-	 bottom: 1;
-	 width: 340px;
-	 height: 100px;
-}
- .container .search {
-	 position: absolute;
-	 margin: auto;
-	 top: 0;
-	 right: 0;
-	 bottom: 0;
-	 left: 0;
-	 width: 50px;
-	 height: 50px;
-	 background: white;
-	 border-radius: 50%;
-	 transition: all 1s;
-	 z-index: 4;
-}
- .container .search:hover {
-	 cursor: pointer;
-}
- .container .search::before {
-	 content: "";
-	 position: absolute;
-	 margin: auto;
-	 top: 22px;
-	 right: 0;
-	 bottom: 8px;
-	 left: 12px;
-	 width: 10px;
-	 height: 2px;
-	 background: #120499;
-	 transform: rotate(45deg);
-	 transition: all 0.5s;
-}
- .container .search::after {
-	 content: "";
-	 position: absolute;
-	 margin: auto;
-	 top: -5px;
-	 right: 0;
-	 bottom: 0;
-	 left: -5px;
-	 width: 15px;
-	 height: 15px;
-	 border-radius: 50%;
-	 border: 2px solid #120499;
-	 transition: all 0.5s;
+  }
   
-}
- .container input {
-	 position: absolute;
-	 margin: auto;
-	 top: 0;
-	 right: 0;
-	 bottom: 0;
-	 left: 0;
-	 width: 50px;
-	 height: 50px;
-	 outline: none;
-	 border: none;
-	 background: white;
-	 color: black;
-	 padding: 0 80px 0 20px;
-	 border-radius: 30px;
-	 transition: all 1s;
-	 opacity: 0;
-	 z-index: 5;
-	 font-weight: bolder;
-	 letter-spacing: 0.1em;
+  .container {
+   position: absolute;
+   margin: auto;
+   top: 0;
+   left: 1;
+   right: 0;
+   bottom: 1;
+   width: 340px;
+   height: 100px;
+  }
+  .container .search {
+   position: absolute;
+   margin: auto;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   width: 50px;
+   height: 50px;
+   background: white;
+   border-radius: 50%;
+   transition: all 1s;
+   z-index: 4;
+  }
+  .container .search:hover {
+   cursor: pointer;
+  }
+  .container .search::before {
+   content: "";
+   position: absolute;
+   margin: auto;
+   top: 22px;
+   right: 0;
+   bottom: 8px;
+   left: 12px;
+   width: 10px;
+   height: 2px;
+   background: #120499;
+   transform: rotate(45deg);
+   transition: all 0.5s;
+  }
+  .container .search::after {
+   content: "";
+   position: absolute;
+   margin: auto;
+   top: -5px;
+   right: 0;
+   bottom: 0;
+   left: -5px;
+   width: 15px;
+   height: 15px;
+   border-radius: 50%;
+   border: 2px solid #120499;
+   transition: all 0.5s;
+  
+  }
+  .container input {
+   position: absolute;
+   margin: auto;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   width: 50px;
+   height: 50px;
+   outline: none;
+   border: none;
+   background: white;
+   color: black;
+   padding: 0 80px 0 20px;
+   border-radius: 30px;
+   transition: all 1s;
+   opacity: 0;
+   z-index: 5;
+   font-weight: bolder;
+   letter-spacing: 0.1em;
    box-shadow: 0 0 10px 0 #120499,
                 0 20px 25px 0 rgba(0, 0, 0, 0.0);
   font-size: 12px;
                 
    
-}
- .container input:hover {
-	 cursor: pointer;
-}
- .container input:focus {
-	 width: 300px;
-	 opacity: 1;
-	 cursor: text;
-}
- .container input:focus ~ .search {
-	 right: -250px;
-	 background: white;
-	 z-index: 6;
+  }
+  .container input:hover {
+   cursor: pointer;
+  }
+  .container input:focus {
+   width: 300px;
+   opacity: 1;
+   cursor: text;
+  }
+  .container input:focus ~ .search {
+   right: -250px;
+   background: white;
+   z-index: 6;
    
-}
- .container input:focus ~ .search::before {
-	 top: 5px;
-	 left: 0px;
-	 width: 30px;
+  }
+  .container input:focus ~ .search::before {
+   top: 5px;
+   left: 0px;
+   width: 30px;
    
 }
  .container input:focus ~ .search::after {
@@ -244,7 +244,7 @@
  
   
   /* --------------Podium-------------- */
-
+  
   .podium{
     height: 100svh;
     width: 100vw;
@@ -252,11 +252,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }
-
-  .podium .date{
-    height: 10svh;
-    width: 100vw;
     display: flex;
     align-items: end;
   }
@@ -275,23 +270,25 @@
     }
 
   .podium .place{
-    height: 90svh;
-    width: 100vw; 
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    height: 100svh;
+    width: 70vw; 
 
   }
-
+  
   .ranked{
-    height: 80%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
+    align-items: end;
+    justify-content: space-around;  
   }
-
+  
+  .ranked a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
   .un{
     height: 50svh;
     width: 100%;
@@ -306,7 +303,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
   }
-
+  
   .deux{
     height: 30svh;
     width: 100%;
@@ -321,7 +318,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
   }
-
+  
   .trois{
     height: 23svh;
     width: 100%;
@@ -336,7 +333,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
   }
-
+  
   .coupe1{
     height: 20svh;
     width: 100%;
@@ -352,11 +349,11 @@
     letter-spacing: 1.5px;
     margin-top: 10%;
   }
-
+  
   .coupe1 p{
     margin-bottom: 20%;
   }
-
+  
   .coupe2{
     height: 15svh;
     width: 100%;
@@ -372,11 +369,11 @@
     letter-spacing: 1.5px;
     margin-top: 5%;
   }
-
+  
   .coupe2 p{
     margin-bottom: 15%;
   }
-
+  
   .coupe3{
     height: 11svh;
     width: 100%;
@@ -392,25 +389,26 @@
     letter-spacing: 1.5px;
     
   }
-
+  
   .coupe3 p{
     margin-bottom: 10%;
   }
-
+  
   .general{
     height: 50svh;
-    width: 30%;
+    width: 15vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     justify-content: space-between;
     cursor: pointer;
-  }
 
+  }
+  
   .general2{
     height: 70svh;
-    width: 30%;
+    width: 15vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -418,11 +416,11 @@
     justify-content: space-between;
     cursor: pointer;
   }
-
-
+  
+  
   .general3{
     height: 43svh;
-    width: 30%;
+    width: 15vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -433,24 +431,27 @@
 
 
     /* --------------Podium-------------- */
+  
 
-
+  
     .classement{
       height: auto;
       width: 100vw;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 150px;
+      padding-top: 50px;
       flex-direction: column;
+      background-color: white;
+      padding-bottom: 200px;
     }
-
+  
     .place4, .place5, .place6, .place7, .place8, .place9, .place10{
       margin-top: 60px;
       border-radius: 27px;
       border: 3px solid #080053;
       height: 150px;
-      width: 50vw;
+      width: 70vw;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -460,16 +461,16 @@
       letter-spacing: 1.5px;
       justify-content: space-between;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.6s;
     }
-
+  
     .place4:hover, .place5:hover, .place6:hover, .place7:hover, .place8:hover, .place9:hover, .place10:hover{
       background-color: #080053;
       color: #FFF;
       transition: 0.3s;
     }
-
-
+  
+  
     .boxlogoclub{
       display: flex;
       align-items: center;
@@ -477,7 +478,7 @@
       height: 100%;
       width: 15%;
     }
-
+  
     .boxplaceclub{
       display: flex;
       align-items: center;
@@ -485,7 +486,7 @@
       height: 100%;
       width: 15%;
     }
-
+  
     .place4 span{
       display: flex;
       align-items: center;
@@ -493,11 +494,10 @@
       height: 100%;
       width: 15%;
     }
-
+  
     /* --------------Footer-------------- */
-
+  
     footer {
-      margin-top: 200px;
       background-color: #F4F4F4;;
       height: 550px;
       width: 100vw;
@@ -505,14 +505,14 @@
       flex-direction: column;
       align-items: center;
     }
-
+  
     footer .top{
       width: 100vw;
       height: 75%;
       display: flex;
       justify-content: space-between;
     }
-
+  
     footer .top .desc{
       display: flex;
       flex-direction: column;
@@ -520,21 +520,21 @@
       width: 40%;
       padding-top: 50px;
     }
-
+  
     footer .top .desc h6{
       color: #000;
       font-size: 52px;
       font-weight: 700;
       letter-spacing: 1.5px;
     }
-
+  
     footer .top .desc h6 span{
       color: #080053;
       font-size: 39px;
       font-weight: 700;
       letter-spacing: 1.5px;
     }
-
+  
     footer .top .desc p{
       color: rgba(0, 0, 0, 0.85);
       font-size: 20px;
@@ -546,7 +546,7 @@
       width: 30%;
       padding-top: 60px;
     }
-
+  
     footer .liens{
       display: flex;
       flex-direction: column;
@@ -572,14 +572,14 @@
       width: 30%;
       padding-top: 60px;
     }
-
+  
     footer .top .contact h6{
       color: #000;
       font-size: 36px;
       font-weight: 700;
       letter-spacing: 1.5px;
     }
-
+  
     footer .top .contact a{
       color: rgba(0, 0, 0, 0.85);
       font-size: 20px;
@@ -596,7 +596,7 @@
       background-repeat: no-repeat;
       background-position: top right;
     }
-
+  
     footer .middle{
       display: flex;
       align-items: center;
@@ -605,7 +605,7 @@
       width:50vw;
       height: 15%;
     }
-
+  
     footer .end{
       width: 100vw;
       height: 10%;
@@ -617,14 +617,35 @@
       justify-content: center;
       padding-bottom: 10px;
     }
-
   
-
+  
+  
     footer .liens a:hover {
       color:#120499;
       transition: 0.3s;
     }
   
+  
+  
+  
+    @keyframes apparitionnav {
 
-
- 
+      100%{
+          opacity: 100%;
+          transform: none;
+      }
+  
+  
+  }
+  
+  
+  @keyframes apparitiontitre {
+  
+      100%{
+          opacity: 90%;
+          transform: none;
+      }
+  
+  
+  }
+  
